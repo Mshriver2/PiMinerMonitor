@@ -47,6 +47,9 @@ def get_flexpool_values(wallet):
     ret_value["stale_shares"] = data["result"]["daily"]["stale_shares"]
     return ret_value
 
+def get_nanopool_values(wallet):
+    base_api_url = "https://api.nanopool.org/v1/eth/"
+
 if len(sys.argv) != 3 or (sys.argv[1] != "ethermine" and sys.argv[1] != "flexpool"):
     print("Usage: sudo python3 miner.py ethermine|flexpool wallet")
     exit
