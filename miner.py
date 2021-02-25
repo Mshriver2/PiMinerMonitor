@@ -54,22 +54,14 @@ def get_nanopool_values(wallet):
     #Get balance
     r= requests.get(base_api_url+"balance/:"+wallet)
     data = json.loads(r.text)
-    ret_value["balance"] = data["result"]
+    ret_value["unpaid"] = data["result"]
 
     #Get current hashrate
     r= requests.get(base_api_url+"hashrate/:"+wallet)
     data = json.loads(r.text)
-    ret_value["current_hashrate"] = data["result"]
+    ret_value["reported_hashrate"] = data["result"]
 
-    #Get 1 hr avg hashrate
-    r= requests.get(base_api_url+"avghashratelimited/:"+wallet+"/:1")
-    data = json.loads(r.text)
-    ret_value["one_hour_avg"] = data["result"]
-
-    #Get 6hr avg hashrate
-    r= requests.get(base_api_url+"avghashratelimited/:"+wallet+"/:6")
-    data = json.loads(r.text)
-    ret_value["six_hour_avg"] = data["result"]
+    
 
     return ret_value
 
